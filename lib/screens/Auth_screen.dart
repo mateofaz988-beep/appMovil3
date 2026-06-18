@@ -9,31 +9,47 @@ class AuthScreen extends StatefulWidget {
 
 class _AuthScreenState extends State<AuthScreen> {
   final _formKey = GlobalKey<FormState>();
-  bool _isLogin = true; // Alternar entre Login y Registro
+  bool _isLogin = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(_isLogin ? "Iniciar Sesión" : "Registrarse")),
+      appBar: AppBar(
+        title: Text(_isLogin ? "Iniciar Sesión" : "Registrarse"),
+        centerTitle: true,
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(24.0),
         child: Form(
           key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (!_isLogin)
+              if (!_isLogin) ...[
                 TextFormField(
-                  decoration: const InputDecoration(labelText: "Nombre de usuario", border: OutlineInputBorder()),
+                  decoration: const InputDecoration(
+                    labelText: "Nombre de usuario", 
+                    prefixIcon: Icon(Icons.person_outline),
+                    border: OutlineInputBorder(),
+                  ),
                 ),
-              const SizedBox(height: 15),
+                const SizedBox(height: 15),
+              ],
               TextFormField(
-                decoration: const InputDecoration(labelText: "Correo electrónico", border: OutlineInputBorder()),
+                decoration: const InputDecoration(
+                  labelText: "Correo electrónico", 
+                  prefixIcon: Icon(Icons.email_outlined),
+                  border: OutlineInputBorder(),
+                ),
                 keyboardType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 15),
               TextFormField(
-                decoration: const InputDecoration(labelText: "Contraseña", border: OutlineInputBorder()),
+                decoration: const InputDecoration(
+                  labelText: "Contraseña", 
+                  prefixIcon: Icon(Icons.lock_outline),
+                  border: OutlineInputBorder(),
+                ),
                 obscureText: true,
               ),
               const SizedBox(height: 30),
@@ -42,12 +58,13 @@ class _AuthScreenState extends State<AuthScreen> {
                 child: FilledButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // Aquí irá la lógica de Firebase en el Taller 2
+                      Navigator.pushReplacementNamed(context, '/catalog');
                     }
                   },
                   child: Text(_isLogin ? "Entrar" : "Crear cuenta"),
                 ),
               ),
+              const SizedBox(height: 10),
               TextButton(
                 onPressed: () {
                   setState(() {
@@ -62,4 +79,4 @@ class _AuthScreenState extends State<AuthScreen> {
       ),
     );
   }
-}
+} 
