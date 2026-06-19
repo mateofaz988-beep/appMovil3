@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/Auth_screen.dart';
-import 'screens/welcome_screen.dart';
+import 'package:flutter_application_1/screens/Catalog_screen.dart';
+import 'package:flutter_application_1/screens/auth_screen.dart';
+import 'package:flutter_application_1/screens/welcome_screen.dart';
+
 
 void main() {
   runApp(const MovieStreamApp());
@@ -18,15 +20,14 @@ class MovieStreamApp extends StatelessWidget {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.blueAccent,
-          brightness: Brightness.light,
+          brightness: Brightness.dark, // Modo oscuro para estilo de cine
         ),
       ),
-      // Definimos la ruta inicial
       initialRoute: '/welcome',
-      // Definimos las rutas disponibles
       routes: {
         '/welcome': (context) => const WelcomeScreen(),
         '/auth': (context) => const AuthScreen(),
+        '/catalog': (context) => const CatalogScreen(),
       },
     );
   }
