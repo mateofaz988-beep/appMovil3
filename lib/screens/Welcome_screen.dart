@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -6,60 +7,117 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Usamos SafeArea para que el contenido no se tape con la barra de estado
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Icono decorativo de bienvenida
-                const Icon(Icons.movie_creation_outlined, size: 100, color: Colors.blueAccent),
-                const SizedBox(height: 30),
-                
-                // Mensaje de Bienvenida
-                const Text(
-                  "Bienvenido a MovieStream",
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 15),
-                
-                // Breve descripción
-                const Text(
-                  "Accede a un catálogo exclusivo de películas y disfruta de tus estrenos favoritos en cualquier lugar.",
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 50),
-                
-                // Botón Iniciar Sesión
-                SizedBox(
-                  width: double.infinity,
-                  child: FilledButton(
-                    onPressed: () {
-                      // Acción para navegar a Auth_screen
-                    },
-                    child: const Text("Iniciar Sesión"),
-                  ),
-                ),
-                const SizedBox(height: 15),
-                
-                // Botón Registrarse
-                SizedBox(
-                  width: double.infinity,
-                  child: OutlinedButton(
-                    onPressed: () {
-                      // Acción para navegar a Auth_screen
-                    },
-                    child: const Text("Registrarse"),
-                  ),
-                ),
-              ],
+      backgroundColor: const Color(0xFF141414),
+      body: Stack(
+        children: [
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/img/fondo.jpg'),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.black.withOpacity(0.6),
+                  Colors.black.withOpacity(0.8),
+                  const Color(0xFF141414),
+                ],
+                stops: const [0.0, 0.5, 1.0],
+              ),
+            ),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 40.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const Spacer(),
+                  Text(
+                    "MOVIESTREAM",
+                    style: GoogleFonts.poppins(
+                      fontSize: 36,
+                      color: const Color(0xFF00F5D4),
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 2,
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  Text(
+                    "Películas y series ilimitadas y mucho más.",
+                    style: GoogleFonts.poppins(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      height: 1.2,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    "Disfruta donde quieras. Cancela cuando quieras.",
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      color: Colors.white70,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const Spacer(),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 55,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF00F5D4),
+                        foregroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/auth');
+                      },
+                      child: Text(
+                        "INICIAR SESIÓN",
+                        style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold, letterSpacing: 1),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 55,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(color: Color(0xFF00F5D4), width: 2),
+                        foregroundColor: const Color(0xFF00F5D4),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/auth');
+                      },
+                      child: Text(
+                        "REGISTRARSE",
+                        style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold, letterSpacing: 1),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

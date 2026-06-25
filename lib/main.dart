@@ -1,32 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/Welcome_screen.dart';
 import 'package:flutter_application_1/screens/Auth_screen.dart';
-import 'screens/welcome_screen.dart';
+import 'package:flutter_application_1/screens/Catalog_screen.dart';
 
 void main() {
-  runApp(const MovieStreamApp());
+  runApp(const MyApp());
 }
 
-class MovieStreamApp extends StatelessWidget {
-  const MovieStreamApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'MovieStream',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blueAccent,
-          brightness: Brightness.light,
-        ),
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: const Color(0xFF141414),
       ),
-      // Definimos la ruta inicial
       initialRoute: '/welcome',
-      // Definimos las rutas disponibles
       routes: {
         '/welcome': (context) => const WelcomeScreen(),
         '/auth': (context) => const AuthScreen(),
+        '/catalog': (context) => const CatalogScreen(),
       },
     );
   }
