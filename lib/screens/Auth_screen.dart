@@ -11,7 +11,7 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   final _formKey = GlobalKey<FormState>();
   bool _isLogin = true;
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -188,4 +188,4 @@ class _AuthScreenState extends State<AuthScreen> {
       ),
     );
   }
-}
+} 

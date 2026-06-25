@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         '/welcome': (context) => const WelcomeScreen(),
         '/auth': (context) => const AuthScreen(),
         '/catalog': (context) => const CatalogScreen(),
+        '/catalog': (context) => const CatalogScreen(),
       },
     );
   }
