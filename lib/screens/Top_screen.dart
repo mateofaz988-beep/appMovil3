@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
+ 
 class TopScreen extends StatelessWidget {
   const TopScreen({super.key});
-
+ 
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> topList = [
@@ -23,7 +23,7 @@ class TopScreen extends StatelessWidget {
         "description": "Un nuevo blade runner descubre un secreto profundamente oculto."
       },
     ];
-
+ 
     return ListView.builder(
       itemCount: topList.length,
       padding: const EdgeInsets.all(16),
@@ -35,7 +35,7 @@ class TopScreen extends StatelessWidget {
             leading: CircleAvatar(
               backgroundColor: Colors.blueAccent,
               child: Text(
-                "${index + 1}", 
+                "${index + 1}",
                 style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
               ),
             ),
